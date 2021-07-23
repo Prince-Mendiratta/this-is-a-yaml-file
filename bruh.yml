@@ -1,3 +1,4 @@
+# A sample file
 another_test:
   stage: test
   script:
