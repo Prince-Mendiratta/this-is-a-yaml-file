@@ -1,5 +1,14 @@
 # A sample file
-another_test:
-  stage: test
-  script:
-    - echo 2
+:.api_test:
+  :rules:
+  - :if: $CI_PIPELINE_SOURCE=="merge_request_event"
+    :changes:
+    - src/api/*
+:deploy:
+  :rules:
+  - :when: manual
+    :allow_failure: true
+  :extends:
+  - ".api_test"
+  :script:
+  - echo "hello world"
